@@ -19,7 +19,7 @@
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 
-    
+
 
     <style>
         /* Additional styles to handle sidebar visibility */
@@ -270,7 +270,7 @@
             mainContent.classList.toggle('expand-content');
         });
     </script>
-    
+
 </body>
 
 </html>
