@@ -196,7 +196,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="{{ route('welcome2') }}">
                     <img src="{{ asset('images/logo.png') }}" alt="" width="100 " height="50">
                 </a>
                 <form class="d-flex" role="search">
