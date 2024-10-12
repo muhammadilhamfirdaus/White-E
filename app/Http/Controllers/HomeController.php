@@ -30,4 +30,9 @@ class HomeController extends Controller
     {
         return view('welcome2');
     }
+
+    public function index3()
+    {
+        return view('mm');
+    }
 }
