@@ -193,18 +193,42 @@
             cursor: pointer;
         }
 
+        .btn1 {
+            padding: 10px 20px;
+            font-size: 1.1rem;
+            background-color: #006BFF;
+            color: black;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
         .btn:hover {
             background-color: #f0f0f0;
+        }
+
+        .btn:hover {
+            background-color: #f0f0f0;
+        }
+
+        /* Transition for smooth icon rotation */
+        .rotate-icon {
+            transition: transform 0.3s ease;
+        }
+
+        /* Rotate the icon when expanded */
+        .rotate-icon.rotate {
+            transform: rotate(90deg);
         }
     </style>
 </head>
 
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm ">
-            <div class="container">
+        <nav class="navbar navbar-expand-md navbar-light bg-dark shadow-sm">
+            <div class="container-fluid d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center">
                 <a class="navbar-brand" href="{{ route('welcome2') }}">
-                    <img src="{{ asset('images/logo.png') }}" alt="" width="100 " height="50">
+                    <img src="{{ asset('images/logo1.png') }}" alt="" width="100" height="50">
                 </a>
                 <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
                 <form class="d-flex me-4" role="search">
@@ -217,20 +241,14 @@
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- left Side Of Navbar -->
-                    <ul class="navbar-nav ms-auto">
-                    </ul>
-
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
-                        <!-- Authentication Links -->
                         @guest
                         @if (Route::has('login'))
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                         </li>
                         @endif
-
                         @if (Route::has('register'))
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
@@ -238,16 +256,14 @@
                         @endif
                         @else
                         <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{ Auth::user()->name }}
                             </a>
-
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{{ route('logout') }}"
-                                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                   onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}
                                 </a>
-
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                     @csrf
                                 </form>
@@ -256,37 +272,44 @@
                         @endguest
                     </ul>
                 </div>
-
             </div>
         </nav>
-
-        <main>
-            @yield('content')
+                <!-- Main Content -->
+                <div class="col-md-10 p-0 ">
+                    @yield('content')
+                </div>
+            </div>
         </main>
     </div>
 
+    <!-- Scripts -->
     <script>
-        // Toggle the side navigation
         const sidebarToggle = document.body.querySelector('#sidebarToggle');
         if (sidebarToggle) {
-            // Uncomment Below to persist sidebar toggle between refreshes
-            // if (localStorage.getItem('sb|sidebar-toggle') === 'true') {
-            //     document.body.classList.toggle('sb-sidenav-toggled');
-            // }
             sidebarToggle.addEventListener('click', event => {
                 event.preventDefault();
                 document.body.classList.toggle('sb-sidenav-toggled');
                 localStorage.setItem('sb|sidebar-toggle', document.body.classList.contains('sb-sidenav-toggled'));
             });
         }
+
+        $(document).ready(function() {
+            $('#MMSubmenu').on('show.bs.collapse', function() {
+                $('[data-bs-target="#MMSubmenu"]').addClass('rotate');
+            });
+            $('#MMSubmenu').on('hide.bs.collapse', function() {
+                $('[data-bs-target="#MMSubmenu"]').removeClass('rotate');
+            });
+        });
     </script>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
     <script src="assets/demo/chart-area-demo.js"></script>
     <script src="assets/demo/chart-bar-demo.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
     <script src="js/datatables-simple-demo.js"></script>
-
 </body>
+
 
 </html>

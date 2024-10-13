@@ -10,13 +10,22 @@
                     <div class="sb-sidenav-menu">
                         <div class="nav">
                             <div class="sb-sidenav-menu-heading">Core</div>
-                            <a class="nav-link" href="{{ route('mm') }}">
-                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                                dwq
+                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
+                                <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                                Material Management
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
-                            <a class="nav-link" href="processbrowse.php">
+                            <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav">
+                                    <a class="nav-link" href="{{ route('masterdata') }}">Master data</a>
+                                    <a class="nav-link" href="layout-sidenav-light.html">Inventory</a>
+                                    <a class="nav-link" href="layout-sidenav-light.html">Procrutment</a>
+                                    <a class="nav-link" href="layout-sidenav-light.html">Material Control</a>
+                                </nav>
+                            </div>
+                            <a class="nav-link" href="{{ route('inventory') }}">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                                Process Browse
+                                Inventory
                             </a>
                             <a class="nav-link" href="keluar.php">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
@@ -107,28 +116,7 @@
             <!-- Main content -->
             <main id="main-content" class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
 
-                <img src="{{ asset('images/dashboard-logo.png') }}" class="img-fluid" alt="...">
-                <div class="container-sections">
-                    <!-- Section 1 -->
-                    <div class="section section-1">
-                        <div>
-                            <h1>Oracle Cloud</h1>
-                            <h2>Applications</h2>
-                            <p>A complete suite of cloud applications delivering consistent processes and data across your business</p>
-                            <button class="btn">Explore cloud apps</button>
-                        </div>
-                    </div>
-
-                    <!-- Section 2 -->
-                    <div class="section section-2">
-                        <div>
-                            <h1>Oracle Cloud</h1>
-                            <h2>Infrastructure</h2>
-                            <p>An automated, secure platform for migrating enterprise workloads and building new cloud native apps</p>
-                            <button class="btn">Explore OCI</button>
-                        </div>
-                    </div>
-                </div>
+               
                 <!-- Dashboard content -->
                 <!-- <div class="row">
                     <div class="col-md-6">

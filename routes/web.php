@@ -20,4 +20,12 @@ Route::get('/welcome2', [App\Http\Controllers\HomeController::class, 'index2'])-
 
 Auth::routes();
 
-Route::get('/mm', [App\Http\Controllers\HomeController::class, 'index3'])->name('mm');
+Route::get('/masterdata', [App\Http\Controllers\HomeController::class, 'index3'])->name('masterdata');
+
+Auth::routes();
+
+Route::get('/inventory', [App\Http\Controllers\HomeController::class, 'index4'])->name('inventory');
+
+Auth::routes();
+
+Route::get('/inventory-table', [App\Http\Controllers\HomeController::class, 'table1'])->name('inventory-table');

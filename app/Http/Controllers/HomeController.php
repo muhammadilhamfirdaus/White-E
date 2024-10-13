@@ -33,6 +33,15 @@ class HomeController extends Controller
 
     public function index3()
     {
-        return view('mm');
+        return view('masterdata');
+    }
+    public function index4()
+    {
+        return view('inventory');
+    }
+
+    public function table1()
+    {
+        return view('inventory-table');
     }
 }
