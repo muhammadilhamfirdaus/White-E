@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MaterialController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -20,7 +21,7 @@ Route::get('/welcome2', [App\Http\Controllers\HomeController::class, 'index2'])-
 
 Auth::routes();
 
-Route::get('/masterdata', [App\Http\Controllers\HomeController::class, 'index3'])->name('masterdata');
+Route::get('/create_material', [App\Http\Controllers\HomeController::class, 'index3'])->name('create_material');
 
 Auth::routes();
 
@@ -29,3 +30,8 @@ Route::get('/inventory', [App\Http\Controllers\HomeController::class, 'index4'])
 Auth::routes();
 
 Route::get('/inventory-table', [App\Http\Controllers\HomeController::class, 'table1'])->name('inventory-table');
+
+
+Route::post('/materials', [MaterialController::class, 'store'])->name('materials.store');
+
+

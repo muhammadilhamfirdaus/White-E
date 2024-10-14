@@ -17,7 +17,17 @@
                             </a>
                             <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="{{ route('masterdata') }}">Master data</a>
+                                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
+                                        <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                                        Master Data
+                                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                                    </a>
+                                    <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                                        <nav class="sb-sidenav-menu-nested nav">
+                                            <a class="nav-link" href="{{ route('create_material') }}">Create Material</a>
+                                            <a class="nav-link" href="layout-sidenav-light.html">Report</a>
+                                        </nav>
+                                    </div>
                                     <a class="nav-link" href="layout-sidenav-light.html">Inventory</a>
                                     <a class="nav-link" href="layout-sidenav-light.html">Procrutment</a>
                                     <a class="nav-link" href="layout-sidenav-light.html">Material Control</a>
@@ -115,139 +125,63 @@
 
             <!-- Main content -->
             <main id="main-content" class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+                <div class="bg-white dark:bg-gray-800 p-8 rounded-lg shadow-lg w-full max-w-md">
+                    <h2 class="text-2xl font-semibold mb-6 text-center">Material Management / Masterdata Material / Create Material</h2>
 
-               
-                <!-- Dashboard content -->
-                <!-- <div class="row">
-                    <div class="col-md-6">
-                        <h4>WHITE-E ERP</h4>
-                        <div class="list-group">
-                            <a href="#" class="list-group-item list-group-item-action">Material Management</a>
-                            <a href="#" class="list-group-item list-group-item-action">Production Planning</a>
-                            <a href="#" class="list-group-item list-group-item-action">Sales And Distibutor</a>
-                        </div>
+                    <!-- Alert untuk pesan sukses -->
+                    @if (session('success'))
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        {{ session('success') }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
+                    @endif
 
-                    <div class="col-md-6">
-                        <h4>Material Management</h4>
-                        <div class="list-group">
-                            <a href="#" class="list-group-item list-group-item-action">Item</a>
-                            <a href="#" class="list-group-item list-group-item-action">Customer</a>
-                            <a href="#" class="list-group-item list-group-item-action">Supplier</a>
-                            <a href="#" class="list-group-item list-group-item-action">Sales Invoice</a>
+                    <!-- Form Create Material -->
+                    <form action="{{ route('materials.store') }}" method="POST">
+                        @csrf
+                        <!-- Item Code -->
+                        <div class="mb-4">
+                            <label for="itemCode" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Item Code</label>
+                            <input type="text" id="itemCode" name="item_code" required class="mt-1 block w-full px-3 py-2 bg-gray-100 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-900 dark:border-gray-700">
                         </div>
-                    </div>
 
-                    <div class="col-md-6">
-                        <h4>Your Shortcuts</h4>
-                        <div class="list-group">
-                            <a href="#" class="list-group-item list-group-item-action">Item</a>
-                            <a href="#" class="list-group-item list-group-item-action">Customer</a>
-                            <a href="#" class="list-group-item list-group-item-action">Supplier</a>
-                            <a href="#" class="list-group-item list-group-item-action">Sales Invoice</a>
+                        <!-- Item Name -->
+                        <div class="mb-4">
+                            <label for="itemName" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Item Name</label>
+                            <input type="text" id="itemName" name="item_name" required class="mt-1 block w-full px-3 py-2 bg-gray-100 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-900 dark:border-gray-700">
                         </div>
-                    </div>
-                    <div class="col-md-6">
-                        <h4>Your Shortcuts</h4>
-                        <div class="list-group">
-                            <a href="#" class="list-group-item list-group-item-action">Item</a>
-                            <a href="#" class="list-group-item list-group-item-action">Customer</a>
-                            <a href="#" class="list-group-item list-group-item-action">Supplier</a>
-                            <a href="#" class="list-group-item list-group-item-action">Sales Invoice</a>
+
+                        <!-- Unit of Measure -->
+                        <div class="mb-4">
+                            <label for="unitOfMeasure" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Unit Of Measure</label>
+                            <select id="unitOfMeasure" name="unit_of_measure" required class="mt-1 block w-full px-3 py-2 bg-gray-100 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-900 dark:border-gray-700">
+                                <option value="">Select Unit</option>
+                                <option value="pcs">PCS</option>
+                                <option value="kg">KG</option>
+                                <option value="liter">Liter</option>
+                            </select>
                         </div>
-                    </div>
+
+                        <!-- Group -->
+                        <div class="mb-4">
+                            <label for="group" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Group</label>
+                            <select id="group" name="group" required class="mt-1 block w-full px-3 py-2 bg-gray-100 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-900 dark:border-gray-700">
+                                <option value="">Select Group</option>
+                                <option value="raw_materials">Raw Materials</option>
+                                <option value="finished_goods">Finished Goods</option>
+                                <option value="packaging">Packaging</option>
+                            </select>
+                        </div>
+
+                        <!-- Save Button -->
+                        <div class="flex justify-end">
+                            <button type="submit" class="px-6 py-2 text-white bg-indigo-600 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                                Save
+                            </button>
+                        </div>
+                    </form>
                 </div>
-
-                <div class="row mt-4">
-                    <div class="col-md-6">
-                        <h4>Reports & Masters</h4>
-                        <ul class="list-group">
-                            <li class="list-group-item">Accounting</li>
-                            <li class="list-group-item">Stock</li>
-                            <li class="list-group-item">CRM</li>
-                        </ul>
-                    </div>
-
-                    <div class="col-md-6">
-                        <h4>Data Import and Settings</h4>
-                        <ul class="list-group">
-                            <li class="list-group-item">Import Data</li>
-                            <li class="list-group-item">Chart of Accounts</li>
-                        </ul>
-                    </div>
-                </div> -->
-
-
-                <div class="container mt-5">
-                    <!-- Your Shortcuts Section -->
-                    <div class="row dashboard-section">
-                        <div class="col-md-12">
-                            <h4>WHITE-E</h4>
-                            <div class="row">
-                                <div class="col-md-3 shortcut-group">
-                                    <a href="#">Material Management (MM)</a>
-                                </div>
-                                <div class="col-md-3 shortcut-group">
-                                    <a href="#">Production Planning (PP)</a>
-                                </div>
-                                <div class="col-md-3 shortcut-group">
-                                    <a href="#">Sales and Distibutor (SD)</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Reports & Masters Section -->
-                    <div class="row dashboard-section">
-                        <div class="col-md-4">
-                            <h4>Material Management (MM) </h4>
-                            <ul class="list-group">
-                                <li class="list-group-item"><a href="#">Masterdata</a></li>
-                                <li class="list-group-item"><a href="#">Inventory</a></li>
-                                <li class="list-group-item"><a href="#">Procurement</a></li>
-                                <li class="list-group-item"><a href="#">Material Control</Code></a></li>
-                            </ul>
-                        </div>
-                        <div class="col-md-4">
-                            <h4>Production Planning</h4>
-                            <ul class="list-group">
-                                <li class="list-group-item"><a href="#">Bill of Material (BOM)</a></li>
-                                <li class="list-group-item"><a href="#">Production Order (PRO)</a></li>
-                                <li class="list-group-item"><a href="#">Good Issue (GI)</a></li>
-                            </ul>
-                        </div>
-                        <div class="col-md-4">
-                            <h4>Sales and Distributor (SD)</h4>
-                            <ul class="list-group">
-                                <li class="list-group-item"><a href="#">Sales Order (SO)</a></li>
-                                <li class="list-group-item"><a href="#">Delivery</a></li>
-                                <li class="list-group-item"><a href="#">Shipment</a></li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <!-- Data Import and Settings Section -->
-                    <div class="row dashboard-section">
-                        <div class="col-md-4">
-                            <h4>Data Import and Settings</h4>
-                            <ul class="list-group">
-                                <li class="list-group-item"><a href="#">Transaksi </a></li>
-                                <li class="list-group-item"><a href="#">Masterdata</a></li>
-                                <li class="list-group-item"><a href="#">Account Management</a></li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <!-- Edit and New buttons -->
-                    <!-- <div class="btn-group">
-                        <button class="btn btn-outline-primary">Edit</button>
-                        <button class="btn btn-primary">New</button>
-                    </div> -->
-                </div>
-
-                @yield('content')
             </main>
-
         </div>
     </div>
     @endsection

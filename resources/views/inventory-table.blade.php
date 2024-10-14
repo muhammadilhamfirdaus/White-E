@@ -17,7 +17,7 @@
                             </a>
                             <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="{{ route('masterdata') }}">Master data</a>
+                                    <a class="nav-link" href="{{ route('create_material') }}">Master data</a>
                                     <a class="nav-link" href="{{ route('inventory') }}">Inventory</a>
                                     <a class="nav-link" href="layout-sidenav-light.html">Procrutment</a>
                                     <a class="nav-link" href="layout-sidenav-light.html">Material Control</a>

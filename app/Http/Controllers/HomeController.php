@@ -33,7 +33,7 @@ class HomeController extends Controller
 
     public function index3()
     {
-        return view('masterdata');
+        return view('create_material');
     }
     public function index4()
     {
