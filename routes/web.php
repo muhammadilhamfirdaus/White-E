@@ -34,4 +34,6 @@ Route::get('/inventory-table', [App\Http\Controllers\HomeController::class, 'tab
 
 Route::post('/materials', [MaterialController::class, 'store'])->name('materials.store');
 
+Route::get('/master-material', [MaterialController::class, 'index'])->name('master_material');
+
 
