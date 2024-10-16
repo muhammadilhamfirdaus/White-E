@@ -255,7 +255,7 @@
             </div>
         </nav>
 
-    
+
         <!-- Carousel -->
         <div id="mainCarousel" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">

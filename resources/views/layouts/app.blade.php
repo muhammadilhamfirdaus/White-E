@@ -28,199 +28,7 @@
 
 
 
-    <style>
-        /* Additional styles to handle sidebar visibility */
-        #sidebar {
-            transition: margin 0.3s ease;
-        }
 
-        /* Hide sidebar initially */
-        .hide-sidebar {
-            margin-left: -250px;
-        }
-
-        /* Adjust main content to full width when sidebar is hidden */
-        .expand-content {
-            margin-left: 0 !important;
-        }
-
-        /* Rotate icon when collapsed is open */
-        .rotate-icon {
-            transition: transform 0.3s ease;
-        }
-
-        .rotate-icon.collapsed {
-            transform: rotate(-90deg);
-        }
-
-        /* Align search bar and profile */
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .profile-area {
-            display: flex;
-            align-items: center;
-        }
-
-        .profile-area .username {
-            margin-right: 10px;
-        }
-
-        .profile-area .dropdown-menu {
-            right: 0;
-            left: auto;
-        }
-
-        /* Smaller hamburger button */
-        #toggle-btn {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            padding: 7px;
-            border-radius: 5px;
-        }
-
-        .dashboard-section h4 {
-            margin-bottom: 20px;
-        }
-
-        .dashboard-section {
-            margin-bottom: 30px;
-        }
-
-        .shortcut-group {
-            margin-bottom: 10px;
-        }
-
-        .shortcut-group a {
-            display: block;
-            margin-bottom: 5px;
-        }
-
-        .list-group-item {
-            border: none;
-            padding: 0.5rem 0;
-        }
-
-        .list-group-item a {
-            text-decoration: none;
-            color: #000;
-        }
-
-        .btn-group {
-            margin-top: 20px;
-        }
-
-        /* Background for the main content with a semi-transparent overlay */
-        #sidebar {
-            background-image: url("{{ asset('images/main-content.jpg') }}");
-            /* Replace with your image URL */
-            /* background-size: cover; */
-            background-position: center;
-            position: relative;
-            z-index: 1;
-        }
-
-        /* Semi-transparent overlay */
-        #sidebar::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: rgba(0, 0, 0, 0.2);
-            /* Adjust transparency level */
-            z-index: -1;
-        }
-
-        /* Text color adjusted for contrast */
-        #sidebar h4,
-        #sidebar .list-group-item a {
-            color: white;
-            /* Adjust to ensure good contrast with the background */
-        }
-
-        .container-sections {
-            display: flex;
-            height: 40vh;
-        }
-
-        .section {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex: 1;
-            color: white;
-            text-align: center;
-            padding: 20px;
-        }
-
-        .section-1 {
-            background: url("{{ asset('images/bg1.jpg') }}") no-repeat center center/cover;
-        }
-
-        .section-2 {
-            background: url("{{ asset('images/bg2.jpg') }}") no-repeat center center/cover;
-        }
-
-        h2 {
-            font-size: 2rem;
-            margin-bottom: 10px;
-        }
-
-        h1 {
-            font-size: 3rem;
-            font-weight: bold;
-            margin-bottom: 15px;
-        }
-
-        p {
-            font-size: 1.2rem;
-            margin-bottom: 20px;
-        }
-
-        .btn {
-            padding: 10px 20px;
-            font-size: 1.1rem;
-            background-color: white;
-            color: black;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        .btn1 {
-            padding: 10px 20px;
-            font-size: 1.1rem;
-            background-color: #006BFF;
-            color: black;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        .btn:hover {
-            background-color: #f0f0f0;
-        }
-
-        .btn:hover {
-            background-color: #f0f0f0;
-        }
-
-        /* Transition for smooth icon rotation */
-        .rotate-icon {
-            transition: transform 0.3s ease;
-        }
-
-        /* Rotate the icon when expanded */
-        .rotate-icon.rotate {
-            transform: rotate(90deg);
-        }
-    </style>
 </head>
 
 <body>
@@ -261,7 +69,7 @@
                             </a>
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{{ route('logout') }}"
-                                   onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}
                                 </a>
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
@@ -274,11 +82,131 @@
                 </div>
             </div>
         </nav>
-                <!-- Main Content -->
-                <div class="col-md-10 p-0 ">
-                    @yield('content')
+
+
+        <!-- Main Content -->
+        <div class="col-md-10 p-0 ">
+            <!-- Sidebar -->
+            <div id="layoutSidenav" class="p-0">
+                <div id="layoutSidenav_nav">
+                    <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+                        <div class="sb-sidenav-menu">
+                            <div class="nav">
+                                <div class="sb-sidenav-menu-heading">Core</div>
+                                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
+                                    <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                                    Material Management
+                                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                                </a>
+                                <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                                    <nav class="sb-sidenav-menu-nested nav">
+                                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
+                                            <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                                            Master Data
+                                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                                        </a>
+                                        <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                                            <nav class="sb-sidenav-menu-nested nav">
+                                                <a class="nav-link" href="{{ route('create_material') }}">Create Material</a>
+                                                <a class="nav-link" href="layout-sidenav-light.html">Report</a>
+                                            </nav>
+                                        </div>
+                                        <a class="nav-link" href="layout-sidenav-light.html">Inventory</a>
+                                        <a class="nav-link" href="layout-sidenav-light.html">Procrutment</a>
+                                        <a class="nav-link" href="layout-sidenav-light.html">Material Control</a>
+                                    </nav>
+                                </div>
+                                <a class="nav-link" href="#">
+                                    <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                    Proses Browse
+                                </a>
+                                <a class="nav-link" href="keluar.php">
+                                    <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                    History Barang Keluar
+                                </a>
+                                <a class="nav-link" href="inventorybrowse.php">
+                                    <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                    Inventory Browse
+                                </a>
+                                <a class="nav-link" href="scankeluar.php">
+                                    <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                    Scan Keluar
+                                </a>
+                                <a class="nav-link" href="scanmasuk.php">
+                                    <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                    Scan Masuk
+                                </a>
+                                <a class="nav-link" href="historybarangmasuk.php">
+                                    <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                    History Barang Masuk
+                                </a>
+                                <a class="nav-link" href="historybarangkeluar.php">
+                                    <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                    History Barang Keluar
+                                </a>
+                                <div class="sb-sidenav-menu-heading">Interface</div>
+                                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
+                                    <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                                    Layouts
+                                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                                </a>
+                                <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                                    <nav class="sb-sidenav-menu-nested nav">
+                                        <a class="nav-link" href="layout-static.html">Static Navigation</a>
+                                        <a class="nav-link" href="layout-sidenav-light.html">Light Sidenav</a>
+                                    </nav>
+                                </div>
+                                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
+                                    <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
+                                    Pages
+                                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                                </a>
+                                <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
+                                    <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+                                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
+                                            Authentication
+                                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                                        </a>
+                                        <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
+                                            <nav class="sb-sidenav-menu-nested nav">
+                                                <a class="nav-link" href="login.html">Login</a>
+                                                <a class="nav-link" href="register.html">Register</a>
+                                                <a class="nav-link" href="password.html">Forgot Password</a>
+                                            </nav>
+                                        </div>
+                                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError">
+                                            Error
+                                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                                        </a>
+                                        <div class="collapse" id="pagesCollapseError" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
+                                            <nav class="sb-sidenav-menu-nested nav">
+                                                <a class="nav-link" href="401.html">401 Page</a>
+                                                <a class="nav-link" href="404.html">404 Page</a>
+                                                <a class="nav-link" href="500.html">500 Page</a>
+                                            </nav>
+                                        </div>
+                                    </nav>
+                                </div>
+                                <div class="sb-sidenav-menu-heading">Addons</div>
+                                <a class="nav-link" href="charts.html">
+                                    <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                                    Charts
+                                </a>
+                                <a class="nav-link" href="tables.html">
+                                    <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                                    Tables
+                                </a>
+                            </div>
+                        </div>
+                        <div class="sb-sidenav-footer">
+                            <div class="small">Logged in as:</div>
+                            Start Bootstrap
+                        </div>
+                    </nav>
                 </div>
+                @yield('content')
             </div>
+        </div>
         </main>
     </div>
 
