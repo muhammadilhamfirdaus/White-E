@@ -2,22 +2,39 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Material;
 use Illuminate\Http\Request;
+use App\Models\Material;
 
 class MaterialController extends Controller
 {
+    public function create()
+    {
+        return view('materials.create');
+    }
+
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
-            'item_code' => 'required|string|max:255',
-            'item_name' => 'required|string|max:255',
-            'unit_of_measure' => 'required|string',
-            'group' => 'required|string',
+        // Validasi data
+        $request->validate([
+            'item_code' => 'required',
+            'item_name' => 'required',
+            'unit_of_measure' => 'required',
+            'group' => 'required',
         ]);
 
-        Material::create($validatedData);
+        // Simpan data
+        Material::create($request->all());
 
-        return redirect()->back()->with('success', 'Material created successfully!');
+        // Redirect dengan flash message
+        return redirect()->route('master_material')->with('success', 'Material created successfully!');
+    }
+
+    public function index()
+    {
+        // Mengambil semua data material
+        $materials = Material::all();
+
+        // Mengirim data ke view
+        return view('master_material', compact('materials'));
     }
 }
