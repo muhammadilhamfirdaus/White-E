@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MaterialController;
+use App\Http\Controllers\PurchaseOrderController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -36,4 +37,7 @@ Route::post('/materials', [MaterialController::class, 'store'])->name('materials
 
 Route::get('/master-material', [MaterialController::class, 'index'])->name('master_material');
 
+Route::get('/purchase_order/create', [PurchaseOrderController::class, 'create'])->name('purchase_order.create');
+Route::post('/purchase_order/store', [PurchaseOrderController::class, 'store'])->name('purchase_order.store');
 
+Route::get('/purchase_order/store', [PurchaseOrderController::class, 'index'])->name('purchase_order.store');
