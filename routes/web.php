@@ -32,6 +32,10 @@ Auth::routes();
 
 Route::get('/inventory-table', [App\Http\Controllers\HomeController::class, 'table1'])->name('inventory-table');
 
+Auth::routes();
+
+Route::get('/master_material', [App\Http\Controllers\HomeController::class, 'index5'])->name('master_material');
+
 
 Route::post('/materials', [MaterialController::class, 'store'])->name('materials.store');
 

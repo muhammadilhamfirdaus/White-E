@@ -35,6 +35,12 @@ class HomeController extends Controller
     {
         return view('create_material');
     }
+
+    public function index5()
+    {
+        return view('master_material');
+    }
+
     public function index4()
     {
         return view('inventory');

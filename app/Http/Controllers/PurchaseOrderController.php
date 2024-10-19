@@ -20,7 +20,8 @@ class PurchaseOrderController extends Controller
             'code' => 'required|exists:materials,item_code',  // Memastikan code material ada di tabel materials
             'quantity' => 'required|integer',                 // Pastikan jumlah yang diinput adalah integer
             'vendor' => 'required|string',                    // Vendor adalah string yang diperlukan
-            'delivery_date' => 'required|date',               // Tanggal pengiriman yang valid
+            'delivery_date' => 'required|date',
+            'material' => 'required|string',               // Nama MATERIAL
         ]);
 
         // Ambil data material dari tabel 'materials'
