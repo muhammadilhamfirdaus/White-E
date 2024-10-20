@@ -124,19 +124,18 @@
         <div id="mainCarousel" class="carousel slide bg-black" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="{{ asset('images/gd1.png') }}" class="d-block w-100" alt="Slide 1">
+                    <img src="{{ asset('images/crl2.png') }}" class="d-block w-100" alt="Slide 1">
                     <div class="carousel-caption d-none d-md-block">
-                        <h1>Oracle Cloud</h1>
+                        <!-- <h1>Oracle Cloud</h1>
                         <h2>Applications</h2>
-                        <p>A complete suite of cloud applications delivering consistent processes and data across your business</p>
-                        <a href="{{ route('home') }}"><button class="btn btn-light">APP LAUNCH</button></a>
+                        <p>A complete suite of cloud applications delivering consistent processes and data across your business</p> -->
+                        <a href="{{ route('home') }}"><button class="btn btn-dark">APP LAUNCH</button></a>
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="https://via.placeholder.com/1200x400" class="d-block w-100" alt="Slide 2">
+                    <img src="{{ asset('images/crl3.png') }}" class="d-block w-100" alt="Slide 2">
                     <div class="carousel-caption d-none d-md-block">
-                        <h5>Scalable Cloud Solutions</h5>
-                        <p>Optimize your business with high performance solutions</p>
+                        <a href="{{ route('home') }}"><button class="btn btn-dark">APP LAUNCH</button></a>
                     </div>
                 </div>
             </div>
@@ -155,8 +154,8 @@
             <div class="container">
                 <div class="row ">
                     <div class="col-md-6">
-                        <h1>ERPInspire: Revolutionizing ERP Solutions</h1>
-                        <p class="lead">ERPInspire offers cutting-edge ERP software, streamlining operations with advanced features and real-time insights.</p>
+                        <h1>WHITE-E: Revolutionizing ERP Solutions</h1>
+                        <p class="lead">WHITE-E offers cutting-edge ERP software, streamlining operations with advanced features and real-time insights.</p>
                         <a href="#" class="btn btn-primary">Discover ERPInspire</a>
                         <a href="#" class="btn btn-secondary">Get ERP Solutions</a>
                     </div>
@@ -171,12 +170,12 @@
             <div class="container my-5">
                 <div class="row">
                     <div class="col-md-6 d-flex justify-content-center">
-                        <img src="{{ asset('images/ERP2.png') }}" alt="ERP Inspire Image" class="hero-image">
+                        <img src="{{ asset('images/W3.png') }}" alt="ERP Inspire Image" class="hero-image">
                     </div>
                     <div class="col-md-6 hero-content">
                         <div class="hero-text">
-                            <h1>ERPInspire leads with a decentralized ERP platform, ensuring secure and...</h1>
-                            <p>Experience the power of ERPInspire's decentralized system, enabling global connectivity and financial inclusivity without traditional banking barriers.</p>
+                            <h1>WHITE-E leads with a decentralized Transaction, Crypto, NFT.</h1>
+                            <p>Experience the power of WHITE-E decentralized system, enabling global connectivity and financial inclusivity without traditional banking barriers.</p>
                             <a href="#" class="btn btn-primary">Start Your Journey</a>
                         </div>
                     </div>

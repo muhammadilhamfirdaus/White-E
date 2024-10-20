@@ -35,7 +35,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-dark shadow-sm">
             <div class="container-fluid d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center">
-                <a class="navbar-brand" href="{{ route('welcome2') }}">
+                <a class="navbar-brand" href="{{ route('welcome') }}">
                     <img src="{{ asset('images/logo1.png') }}" alt="" width="100" height="50">
                 </a>
                 <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
