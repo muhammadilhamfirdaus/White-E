@@ -11,6 +11,7 @@
         <table class="table table-hover table-bordered table-striped align-middle">
             <thead class="table-dark">
                 <tr>
+                    <th>PO Number</th>
                     <th>Material Code</th>
                     <th>Material Name</th>
                     <th>Quantity</th>
@@ -21,6 +22,7 @@
             <tbody>
                 @foreach ($orders as $order)
                 <tr>
+                    <td>{{ $order->po_number }}</td>
                     <td>{{ $order->code_material }}</td>
                     <td>{{ $order->nama_material }}</td>
                     <td>{{ $order->quantity }}</td>

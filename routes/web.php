@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MaterialController;
 use App\Http\Controllers\PurchaseOrderController;
+use App\Http\Controllers\VendorController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -45,3 +46,8 @@ Route::get('/purchase_order/create', [PurchaseOrderController::class, 'create'])
 Route::post('/purchase_order/store', [PurchaseOrderController::class, 'store'])->name('purchase_order.store');
 
 Route::get('/purchase_order/store', [PurchaseOrderController::class, 'index'])->name('purchase_order.store');
+
+Route::get('/vendors/create', [VendorController::class, 'create'])->name('vendors.create');
+Route::post('/vendors/store', [VendorController::class, 'store'])->name('vendors.store');
+
+Route::get('/vendors/store', [VendorController::class, 'index'])->name('vendors.index'); // Menampilkan daftar vendor

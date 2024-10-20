@@ -15,32 +15,38 @@ class PurchaseOrderController extends Controller
 
     public function store(Request $request)
     {
-        // Validasi input
         $request->validate([
-            'code' => 'required|exists:materials,item_code',  // Memastikan code material ada di tabel materials
-            'quantity' => 'required|integer',                 // Pastikan jumlah yang diinput adalah integer
-            'vendor' => 'required|string',                    // Vendor adalah string yang diperlukan
+            'items.*.code' => 'required|exists:materials,item_code',
+            'items.*.quantity' => 'required|integer',
+            'items.*.material' => 'required|string',
+            'vendor' => 'required|string',
             'delivery_date' => 'required|date',
-            'material' => 'required|string',               // Nama MATERIAL
         ]);
 
-        // Ambil data material dari tabel 'materials'
-        $material = Material::where('item_code', $request->input('code'))->first();
+        // Ambil po_number terakhir
+        $lastPo = PurchaseOrder::orderBy('po_number', 'desc')->first();
+        $newPoNumber = $lastPo ? $lastPo->po_number + 1 : 1;  // Mulai dari 1 jika belum ada PO
 
-        // Simpan purchase order baru
-        $purchaseOrder = new PurchaseOrder();
-        $purchaseOrder->code_material = $request->code;                 // Mengambil nilai code dari request
-        $purchaseOrder->nama_material = $material->item_name;           // Mengambil item_name dari tabel materials
-        $purchaseOrder->unit_of_measure = $material->unit_of_measure;   // Mengambil unit_of_measure dari tabel materials
-        $purchaseOrder->quantity = $request->quantity;                  // Mengambil quantity dari request
-        $purchaseOrder->price = 0;                                      // Menggunakan harga default, sesuaikan jika perlu
-        $purchaseOrder->vendor = $request->vendor;                      // Mengambil vendor dari request
-        $purchaseOrder->delivery_date = $request->delivery_date;        // Mengambil tanggal pengiriman dari request
+        foreach ($request->items as $item) {
+            $material = Material::where('item_code', $item['code'])->first();
 
-        $purchaseOrder->save();  // Simpan ke database
+            $purchaseOrder = new PurchaseOrder();
+            $purchaseOrder->po_number = $newPoNumber;                 // Set po_number
+            $purchaseOrder->code_material = $item['code'];
+            $purchaseOrder->nama_material = $material->item_name;
+            $purchaseOrder->unit_of_measure = $material->unit_of_measure;
+            $purchaseOrder->quantity = $item['quantity'];
+            $purchaseOrder->price = 0;                                // Set harga default jika diperlukan
+            $purchaseOrder->vendor = $request->vendor;
+            $purchaseOrder->delivery_date = $request->delivery_date;
+
+            $purchaseOrder->save();
+        }
 
         return redirect()->route('purchase_order.create')->with('success', 'Purchase Order created successfully.');
     }
+
+
 
     public function index() // Buat method baru untuk menampilkan semua purchase order
     {
