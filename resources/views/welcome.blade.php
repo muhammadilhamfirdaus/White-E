@@ -138,6 +138,12 @@
                         <a href="{{ route('home') }}"><button class="btn btn-dark">APP LAUNCH</button></a>
                     </div>
                 </div>
+                <div class="carousel-item">
+                    <img src="{{ asset('images/mt1.png') }}" class="d-block w-100" alt="Slide 2">
+                    <div class="carousel-caption d-none d-md-block">
+                        <a href="{{ route('home') }}"><button class="btn btn-dark">APP LAUNCH</button></a>
+                    </div>
+                </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#mainCarousel" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>

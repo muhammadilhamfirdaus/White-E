@@ -46,6 +46,8 @@ Route::get('/purchase_order/create', [PurchaseOrderController::class, 'create'])
 Route::post('/purchase_order/store', [PurchaseOrderController::class, 'store'])->name('purchase_order.store');
 
 Route::get('/purchase_order/store', [PurchaseOrderController::class, 'index'])->name('purchase_order.store');
+Route::resource('purchase_order', PurchaseOrderController::class);
+
 
 Route::get('/vendors/create', [VendorController::class, 'create'])->name('vendors.create');
 Route::post('/vendors/store', [VendorController::class, 'store'])->name('vendors.store');

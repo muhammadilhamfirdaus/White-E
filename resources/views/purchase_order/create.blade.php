@@ -30,6 +30,16 @@
                     <label for="quantity" class="form-label fw-semibold">Quantity</label>
                     <input type="number" name="items[0][quantity]" class="form-control py-3" placeholder="Enter quantity" required>
                 </div>
+
+                <div class="mb-4">
+                    <label for="storage_location" class="form-label fw-semibold">Storage Location</label>
+                    <input type="text" name="items[0][storage_location]" class="form-control py-3" placeholder="Enter storage location (e.g. SLFG)" required>
+                </div>
+
+                <div class="mb-4">
+                    <label for="qty_open" class="form-label fw-semibold">Qty Open</label>
+                    <input type="number" name="items[0][qty_open]" class="form-control py-3" placeholder="Enter open quantity" required>
+                </div>
             </div>
         </div>
 
@@ -47,6 +57,7 @@
         </div>
     </form>
 
+
     @if (session('success'))
     <div class="alert alert-success mt-4 text-center">
         {{ session('success') }}
@@ -59,23 +70,34 @@
     document.getElementById('add-item-btn').addEventListener('click', function() {
         const itemsContainer = document.getElementById('items-container');
         const newItemRow = `
-            <div class="item-row mb-4">
-                <div class="mb-4">
-                    <label for="code" class="form-label fw-semibold">Material Code</label>
-                    <input type="text" name="items[${itemIndex}][code]" class="form-control py-3" placeholder="Enter material code" required>
-                </div>
+    <div class="item-row mb-4">
+        <div class="mb-4">
+            <label for="code" class="form-label fw-semibold">Material Code</label>
+            <input type="text" name="items[${itemIndex}][code]" class="form-control py-3" placeholder="Enter material code" required>
+        </div>
 
-                <div class="mb-4">
-                    <label for="material" class="form-label fw-semibold">Material Name</label>
-                    <input type="text" name="items[${itemIndex}][material]" class="form-control py-3" placeholder="Enter material name" required>
-                </div>
+        <div class="mb-4">
+            <label for="material" class="form-label fw-semibold">Material Name</label>
+            <input type="text" name="items[${itemIndex}][material]" class="form-control py-3" placeholder="Enter material name" required>
+        </div>
 
-                <div class="mb-4">
-                    <label for="quantity" class="form-label fw-semibold">Quantity</label>
-                    <input type="number" name="items[${itemIndex}][quantity]" class="form-control py-3" placeholder="Enter quantity" required>
-                </div>
-            </div>
-        `;
+        <div class="mb-4">
+            <label for="quantity" class="form-label fw-semibold">Quantity</label>
+            <input type="number" name="items[${itemIndex}][quantity]" class="form-control py-3" placeholder="Enter quantity" required>
+        </div>
+
+        <div class="mb-4">
+            <label for="storage_location" class="form-label fw-semibold">Storage Location</label>
+            <input type="text" name="items[${itemIndex}][storage_location]" class="form-control py-3" placeholder="Enter storage location (e.g. SLFG)" required>
+        </div>
+
+        <div class="mb-4">
+            <label for="qty_open" class="form-label fw-semibold">Qty Open</label>
+            <input type="number" name="items[${itemIndex}][qty_open]" class="form-control py-3" placeholder="Enter open quantity" required>
+        </div>
+    </div>
+`;
+
         itemsContainer.insertAdjacentHTML('beforeend', newItemRow);
         itemIndex++;
     });

@@ -19,5 +19,7 @@ class PurchaseOrder extends Model
         'price',
         'vendor',
         'delivery_date',
+        'storage_location',
+        'qty_open',
     ];
 }

@@ -15,11 +15,11 @@
                     <th>Material Code</th>
                     <th>Material Name</th>
                     <th>Quantity</th>
-                    <th>Qty Open</th> <!-- Tambahkan kolom Qty Open -->
-                    <th>Storage Location</th> <!-- Tambahkan kolom Storage Location -->
+                    <th>Qty Open</th> <!-- Kolom Qty Open -->
+                    <th>Storage Location</th> <!-- Kolom Storage Location -->
                     <th>Vendor</th>
                     <th>Delivery Date</th>
-                    <th>Action</th> <!-- Kolom untuk tombol Edit -->
+                    <th>Actions</th> <!-- Kolom untuk action edit -->
                 </tr>
             </thead>
             <tbody>
@@ -29,12 +29,12 @@
                     <td>{{ $order->code_material }}</td>
                     <td>{{ $order->nama_material }}</td>
                     <td>{{ $order->quantity }}</td>
-                    <td>{{ $order->qty_open }}</td> <!-- Menampilkan Qty Open -->
-                    <td>{{ $order->storage_location }}</td> <!-- Menampilkan Storage Location -->
+                    <td>{{ $order->qty_open }}</td> <!-- Tampilkan Qty Open -->
+                    <td>{{ $order->storage_location }}</td> <!-- Tampilkan Storage Location -->
                     <td>{{ $order->vendor }}</td>
                     <td>{{ $order->delivery_date }}</td>
                     <td>
-                        <a href="{{ route('purchase_order.edit', $order->id) }}" class="btn btn-sm btn-warning">Edit</a> <!-- Tombol Edit -->
+                        <a href="{{ route('purchase_order.edit', $order->id) }}" class="btn btn-primary btn-sm">Edit</a> <!-- Tombol Edit -->
                     </td>
                 </tr>
                 @endforeach
