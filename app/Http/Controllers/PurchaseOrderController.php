@@ -35,7 +35,7 @@ class PurchaseOrderController extends Controller
         foreach ($request->items as $item) {
             // Ambil material berdasarkan kode
             $material = Material::where('item_code', $item['code'])->first();
-        
+
             $purchaseOrder = new PurchaseOrder();
             $purchaseOrder->po_number = $newPoNumber;
             $purchaseOrder->code_material = $item['code'];
@@ -47,7 +47,7 @@ class PurchaseOrderController extends Controller
             $purchaseOrder->vendor = $request->vendor;
             $purchaseOrder->delivery_date = $request->delivery_date;
             $purchaseOrder->storage_location = $item['storage_location']; // Ambil dari form
-        
+
             $purchaseOrder->save();
         }
         return redirect()->route('purchase_order.create')->with('success', 'Purchase Order created successfully.');
@@ -90,6 +90,6 @@ class PurchaseOrderController extends Controller
 
         $purchaseOrder->save();
 
-        return redirect()->route('purchase_order.index')->with('success', 'Purchase Order updated successfully.');
+        return redirect()->route('purchase_order.store')->with('success', 'Purchase Order updated successfully.');
     }
 }
