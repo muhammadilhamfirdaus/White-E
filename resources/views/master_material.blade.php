@@ -19,7 +19,7 @@
                 @endif
 
                 <!-- Tabel Daftar Material -->
-                <table class="table table-striped">
+                <table class="table table-striped" id="mauexport">
                     <thead>
                         <tr>
                             <th>Item Code</th>

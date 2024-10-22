@@ -8,7 +8,7 @@
     <p class="text-center">No purchase orders found.</p>
     @else
     <div class="table-responsive">
-        <table class="table table-hover table-bordered table-striped align-middle">
+        <table class="table table-hover table-bordered table-striped align-middle" id="mauexport">
             <thead class="table-dark">
                 <tr>
                     <th>PO Number</th>
