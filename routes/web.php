@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MaterialController;
 use App\Http\Controllers\PurchaseOrderController;
 use App\Http\Controllers\VendorController;
+use App\Models\Material;
 
 Route::get('/', function () {
     return view('welcome');
@@ -53,3 +54,11 @@ Route::get('/vendors/create', [VendorController::class, 'create'])->name('vendor
 Route::post('/vendors/store', [VendorController::class, 'store'])->name('vendors.store');
 
 Route::get('/vendors/store', [VendorController::class, 'index'])->name('vendors.index'); // Menampilkan daftar vendor
+
+
+Route::get('/material/{code}',
+    function ($code) {
+        $material = Material::where('item_code', $code)->first();
+        return response()->json($material);
+    }
+);

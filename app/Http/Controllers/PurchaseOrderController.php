@@ -6,12 +6,18 @@ use Illuminate\Http\Request;
 use App\Models\PurchaseOrder;
 use App\Models\Material;
 
+use App\Models\Vendor;
+
 class PurchaseOrderController extends Controller
 {
     // Menampilkan form create PO
     public function create()
+    
     {
-        return view('purchase_order.create');
+        $vendors = Vendor::all(); // Mengambil semua vendor dari database
+        $materials = Material::all(); // Ambil semua data material
+        return view('purchase_order.create', compact('vendors', 'materials'));
+
     }
 
     // Menyimpan data PO baru
@@ -24,7 +30,7 @@ class PurchaseOrderController extends Controller
             'items.*.material' => 'required|string', // Nama material
             'items.*.storage_location' => 'required|string', // Lokasi penyimpanan
             'items.*.qty_open' => 'required|integer', // Qty Open
-            'vendor' => 'required|string', // Nama vendor
+            'vendor' => 'required|exists:vendors,vendor_name', // Nama vendor
             'delivery_date' => 'required|date', // Tanggal pengiriman
         ]);
 

@@ -27,6 +27,8 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
 
+
+
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js', 'resources/css/app.css'])
 
@@ -129,8 +131,8 @@
                                                 <nav class="sb-sidenav-menu-nested nav">
                                                     <a class="nav-link" href="{{ route('purchase_order.create') }}">Create PO</a>
                                                     <a class="nav-link" href="{{ route('purchase_order.store') }}">Monitoring PO</a>
-                                                    <a class="nav-link" href="layout-sidenav-light.html">Create Vendor</a>
-                                                    <a class="nav-link" href="layout-sidenav-light.html">Vendor Monitoring</a>
+                                                    <a class="nav-link" href="{{ route('vendors.create') }}">Create Vendor</a>
+                                                    <a class="nav-link" href="{{ route('vendors.store') }}">Vendor Monitoring</a>
                                                 </nav>
 
                                                 <a class="nav-link" href="layout-sidenav-light.html">Material Control</a>
