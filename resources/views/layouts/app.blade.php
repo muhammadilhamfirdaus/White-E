@@ -133,6 +133,9 @@
                                                     <a class="nav-link" href="{{ route('purchase_order.store') }}">Monitoring PO</a>
                                                     <a class="nav-link" href="{{ route('vendors.create') }}">Create Vendor</a>
                                                     <a class="nav-link" href="{{ route('vendors.store') }}">Vendor Monitoring</a>
+                                                    <a class="nav-link" href="{{ route('goods_receipts.create') }}">Goods Receipts</a>
+                                                    <a class="nav-link" href="{{ route('goods_receipts.store') }}">History Goods Re</a>
+                                                    <a class="nav-link" href="{{ route('inventory.store') }}">Inventory</a>
                                                 </nav>
 
                                                 <a class="nav-link" href="layout-sidenav-light.html">Material Control</a>

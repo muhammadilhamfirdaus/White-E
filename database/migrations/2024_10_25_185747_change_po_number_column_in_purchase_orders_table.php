@@ -12,14 +12,15 @@ return new class extends Migration
     public function up()
     {
         Schema::table('purchase_orders', function (Blueprint $table) {
-            $table->string('po_number')->after('id')->nullable(); // Menambahkan kolom po_number setelah kolom id
+            $table->string('po_number')->change();
         });
     }
 
     public function down()
     {
         Schema::table('purchase_orders', function (Blueprint $table) {
-            $table->dropColumn('po_number');
+            $table->integer('po_number')->change();
         });
     }
+
 };

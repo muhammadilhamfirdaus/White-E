@@ -5,6 +5,8 @@ use App\Http\Controllers\MaterialController;
 use App\Http\Controllers\PurchaseOrderController;
 use App\Http\Controllers\VendorController;
 use App\Models\Material;
+use App\Http\Controllers\GoodsReceiptController;
+use App\Http\Controllers\InventoryController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -56,9 +58,18 @@ Route::post('/vendors/store', [VendorController::class, 'store'])->name('vendors
 Route::get('/vendors/store', [VendorController::class, 'index'])->name('vendors.index'); // Menampilkan daftar vendor
 
 
-Route::get('/material/{code}',
+Route::get(
+    '/material/{code}',
     function ($code) {
         $material = Material::where('item_code', $code)->first();
         return response()->json($material);
     }
 );
+
+
+Route::get('/goods-receipts/create', [GoodsReceiptController::class, 'create'])->name('goods_receipts.create');
+Route::post('/goods-receipts/store', [GoodsReceiptController::class, 'store'])->name('goods_receipts.store');
+Route::get('/goods-receipts/store', [GoodsReceiptController::class, 'index'])->name('goods_receipts.index');
+
+
+Route::get('/inventory', [InventoryController::class, 'index'])->name('inventory.store');

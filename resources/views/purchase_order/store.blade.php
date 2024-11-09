@@ -9,17 +9,17 @@
     @else
     <div class="table-responsive">
         <table class="table table-hover table-bordered table-striped align-middle" id="mauexport">
-            <thead class="table-dark">
+            <thead>
                 <tr>
                     <th>PO Number</th>
                     <th>Material Code</th>
                     <th>Material Name</th>
-                    <th>Quantity</th>
-                    <th>Qty Open</th> <!-- Tambahkan kolom Qty Open -->
-                    <th>Storage Location</th> <!-- Tambahkan kolom Storage Location -->
+                    <th>Quantity Ordered</th>
+                    <th>Quantity Open</th>
+                    <th>Quantity Received</th>
+                    <th>Storage Location</th>
                     <th>Vendor</th>
                     <th>Delivery Date</th>
-                    <th>Action</th> <!-- Kolom untuk tombol Edit -->
                 </tr>
             </thead>
             <tbody>
@@ -29,13 +29,11 @@
                     <td>{{ $order->code_material }}</td>
                     <td>{{ $order->nama_material }}</td>
                     <td>{{ $order->quantity }}</td>
-                    <td>{{ $order->qty_open }}</td> <!-- Menampilkan Qty Open -->
-                    <td>{{ $order->storage_location }}</td> <!-- Menampilkan Storage Location -->
+                    <td>{{ $order->qty_open }}</td>
+                    <td>{{ $order->qty_received }}</td>
+                    <td>{{ $order->storage_location }}</td>
                     <td>{{ $order->vendor }}</td>
                     <td>{{ $order->delivery_date }}</td>
-                    <td>
-                        <a href="{{ route('purchase_order.edit', $order->id) }}" class="btn btn-sm btn-warning">Edit</a> <!-- Tombol Edit -->
-                    </td>
                 </tr>
                 @endforeach
             </tbody>

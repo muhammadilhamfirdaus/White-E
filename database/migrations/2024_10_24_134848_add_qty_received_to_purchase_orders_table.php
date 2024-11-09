@@ -12,14 +12,18 @@ return new class extends Migration
     public function up()
     {
         Schema::table('purchase_orders', function (Blueprint $table) {
-            $table->string('po_number')->after('id')->nullable(); // Menambahkan kolom po_number setelah kolom id
+            $table->integer('qty_received')->default(0); // Kolom untuk menyimpan jumlah material yang sudah diterima
         });
     }
 
-    public function down()
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
     {
         Schema::table('purchase_orders', function (Blueprint $table) {
-            $table->dropColumn('po_number');
+            //
         });
     }
 };

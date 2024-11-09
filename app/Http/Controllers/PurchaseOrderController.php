@@ -12,12 +12,11 @@ class PurchaseOrderController extends Controller
 {
     // Menampilkan form create PO
     public function create()
-    
+
     {
         $vendors = Vendor::all(); // Mengambil semua vendor dari database
         $materials = Material::all(); // Ambil semua data material
         return view('purchase_order.create', compact('vendors', 'materials'));
-
     }
 
     // Menyimpan data PO baru
@@ -36,7 +35,8 @@ class PurchaseOrderController extends Controller
 
         // Ambil po_number terakhir
         $lastPo = PurchaseOrder::orderBy('po_number', 'desc')->first();
-        $newPoNumber = $lastPo ? $lastPo->po_number + 1 : 451000000;  // Mulai dari 1 jika belum ada PO
+        $newPoNumber = $lastPo ? 'G' . ((int) substr($lastPo->po_number, 1) + 1) : 'G451000000';
+
 
         foreach ($request->items as $item) {
             // Ambil material berdasarkan kode
